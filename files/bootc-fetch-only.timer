@@ -1,0 +1,14 @@
+[Unit]
+Description=Fetch bootc updates
+Documentation=man:bootc(8)
+ConditionPathExists=/run/ostree-booted
+
+[Timer]
+OnBootSec=1m
+# This time is relatively arbitrary and obviously expected to be overridden/changed
+OnUnitInactiveSec=2m
+# When deploying a large number of systems, it may be beneficial to increase this value to help with load on the registry.
+RandomizedDelaySec=1s
+
+[Install]
+WantedBy=timers.target
