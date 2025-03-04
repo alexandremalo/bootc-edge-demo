@@ -9,5 +9,7 @@ RUN mkdir /var/opt/ && \
     echo "Not Ready" > /var/opt/ready.txt && \
     ln -sf /etc/systemd/system/bootc-fetch-only.timer /etc/systemd/system/timers.target.wants/bootc-fetch-only.timer
 
-#Customize the OS
-RUN echo "test-demo-message-1" >> /opt/custom-welcome-file.txt
+#Systemd container service
+COPY files/etc-containers-systemd-demo-http.container /etc/containers/systemd/demo-http.container
+RUN mkdir /opt/html/ && \
+    echo "test-demo-message-1" >> /opt/html/index.html

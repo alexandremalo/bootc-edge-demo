@@ -1,0 +1,18 @@
+[Unit]
+Description=A demo NGINX container serving a simple http page
+After=local-fs.target
+
+[Container]
+ContainerName=demo-nginx
+Image=docker.io/library/nginx:latest
+PublishPort=8080:80
+SecurityLabelDisable=true
+Volume=/opt/html/:/usr/share/nginx/html/:ro
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+# Start by default on boot
+WantedBy=multi-user.target default.target
