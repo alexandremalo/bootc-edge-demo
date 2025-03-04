@@ -1,0 +1,5 @@
+[[customizations.user]]
+name = "demo"
+password = "changeme"
+key = "<PUBLIC_SSH_KEY_HERE>"
+groups = ["wheel"]
