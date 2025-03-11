@@ -10,7 +10,7 @@ RUN mkdir /var/opt/ && \
     ln -sf /etc/systemd/system/bootc-fetch-only.timer /etc/systemd/system/timers.target.wants/bootc-fetch-only.timer
 
 RUN dnf install -y greenboot && dnf clean all
-COPY files/demo-http-greenboot.sh /etc/greenboot/check/wanted.d/
+COPY files/demo-http-greenboot.sh /etc/greenboot/check/required.d/
 
 #Systemd container service
 COPY files/etc-containers-systemd-demo-http.container /etc/containers/systemd/demo-http.container
