@@ -9,6 +9,9 @@ RUN mkdir /var/opt/ && \
     echo "Not Ready" > /var/opt/ready.txt && \
     ln -sf /etc/systemd/system/bootc-fetch-only.timer /etc/systemd/system/timers.target.wants/bootc-fetch-only.timer
 
+RUN dnf install -y greenboot && dnf clean all
+COPY files/demo-http-greenboot.sh /etc/greenboot/check/wanted.d/
+
 #Systemd container service
 COPY files/etc-containers-systemd-demo-http.container /etc/containers/systemd/demo-http.container
 RUN mkdir /opt/html/ && \
