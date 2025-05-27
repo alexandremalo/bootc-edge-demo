@@ -1,2 +1,3 @@
 disk-img-build/output/*
 !disk-img-build/output/.gitkeep
+.DS_Store
