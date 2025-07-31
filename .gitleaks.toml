@@ -1,0 +1,6 @@
+[allowlist]
+  description = "Global Allowlist"
+  paths = [
+    # Ignore fake certificates and private keys in config.yaml (CA, CRT, KEY)
+    '''rhem\/config.yaml$''',
+  ]
