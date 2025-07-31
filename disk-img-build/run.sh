@@ -10,4 +10,4 @@ sudo podman run \
     registry.redhat.io/rhel9/bootc-image-builder:latest \
     --type iso \
     --config /config.toml \
-  quay.io/alexmalo/bootc/demo:2
+  quay.io/alexmalo/bootc/demo:3

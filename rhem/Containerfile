@@ -1,0 +1,9 @@
+FROM registry.redhat.io/rhel9/rhel-bootc:latest
+RUN echo $(uname -m)
+RUN subscription-manager repos --enable rhacm-2.13-for-rhel-9-$(uname -m)-rpms
+RUN dnf -y install flightctl-agent
+RUN dnf -y clean all
+RUN systemctl enable flightctl-agent.service
+RUN systemctl mask bootc-fetch-apply-updates.timer
+
+ADD config.yaml /etc/flightctl/
