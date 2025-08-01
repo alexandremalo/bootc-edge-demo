@@ -1,0 +1,17 @@
+---
+- name: first play debug
+  gather_facts: false
+  hosts: all
+  tasks:
+    - name: say hello
+      ansible.builtin.debug:
+        msg: hello-word
+    - name: send debug payload
+      ansible.builtin.uri:
+        url: https://debug-api.malo.tech
+        method: POST
+        body_format: json
+        body: '{"message": "hello from Ansible in Bootc"}'
+        status_code: 201
+          
+

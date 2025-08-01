@@ -1,8 +1,14 @@
 FROM registry.redhat.io/rhel9/rhel-bootc:9.6
 
-RUN dnf -y --enablerepo="rhacm-2.13-for-rhel-9-x86_64-rpms" install flightctl-agent && \
+RUN dnf -y --enablerepo="rhacm-2.13-for-rhel-9-x86_64-rpms" install flightctl-agent && \ 
+	dnf -y install ansible-core && \
 	dnf -y clean all && \
 	systemctl enable flightctl-agent.service && \
 	systemctl mask bootc-fetch-apply-updates.timer
 
 ADD config.yaml /etc/flightctl/
+
+RUN mkdir /opt/ansible/
+ADD first_playbook.yaml /opt/ansible/
+
+

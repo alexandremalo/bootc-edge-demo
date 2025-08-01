@@ -1,3 +1,4 @@
 disk-img-build/output/*
 !disk-img-build/output/.gitkeep
+rhem/output/*
 .DS_Store
