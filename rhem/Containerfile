@@ -1,13 +1,18 @@
 FROM registry.redhat.io/rhel9/rhel-bootc:9.6
 
-RUN dnf -y --enablerepo="rhacm-2.13-for-rhel-9-x86_64-rpms" install flightctl-agent && \ 
+#Install flight-agent and ansible cli
+RUN dnf -y --enablerepo="rhacm-2.14-for-rhel-9-$(uname -m)-rpms" install flightctl-agent && \ 
 	dnf -y install ansible-core && \
 	dnf -y clean all && \
 	systemctl enable flightctl-agent.service && \
 	systemctl mask bootc-fetch-apply-updates.timer
-
+#Configure call home to rhem central server
 ADD config.yaml /etc/flightctl/
 
+#Configure flightctl lifecycle hooks
+RUN mkdir -pv         /{usr/lib,etc}/flightctl/hooks.d/{beforeUpdating,afterUpdating,beforeRebooting,afterRebooting}/
+
+#Add script to run at edge location
 RUN mkdir /opt/ansible/
 ADD first_playbook.yaml /opt/ansible/
 
