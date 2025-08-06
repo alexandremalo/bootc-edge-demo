@@ -1,6 +1,6 @@
 ---
 - name: first play debug
-  gather_facts: false
+  gather_facts: true
   hosts: all
   tasks:
     - name: say hello
@@ -11,7 +11,7 @@
         url: https://debug-api.malo.tech
         method: POST
         body_format: json
-        body: '{"msg": "hello from Ansible in Bootc"}'
+        body: '{"msg": "hello from {{ ansible_hostname }} via Ansible in Bootc", "host": "{{ ansible_fqdn }}" }'
         status_code: 201
           
 
