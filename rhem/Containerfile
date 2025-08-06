@@ -19,4 +19,4 @@ ADD files/01-at-boot-ansible.yaml /usr/lib/flightctl/hooks.d/afterrebooting/01-a
 
 #Add ansible playbook to run at edge location
 RUN mkdir /opt/ansible/
-ADD files/first_playbook.yaml /opt/ansible/
+ADD files/main_playbook.yaml /opt/ansible/

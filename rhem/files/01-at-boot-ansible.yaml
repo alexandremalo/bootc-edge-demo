@@ -1,2 +1,2 @@
-- run: /usr/bin/ansible-playbook --inventory /var/opt/inventory.ini /opt/ansible/*
+- run: /usr/bin/ansible-playbook --inventory /var/opt/inventory.ini /opt/ansible/main_playbook.yaml
   timeout: 10m
