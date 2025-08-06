@@ -11,7 +11,7 @@
         url: https://debug-api.malo.tech
         method: POST
         body_format: json
-        body: '{"msg": "Hi from {{ ansible_hostname }} via Ansible in Bootc", "host": "{{ ansible_fqdn }}", "managed_by": "Red Hat Edge Manager" }'
+        body: '{"msg": "Hi from {{ ansible_hostname }} via Ansible in Bootc", "host": "{{ ansible_fqdn }}", "managed_by": "Red Hat Edge Manager", "version": "1.0.0"}'
         status_code: 201
           
 
