@@ -1,2 +1,2 @@
 - run: /usr/bin/sh /opt/wait-for-readiness.sh
-  timeout: 5m
+  timeout: 2160h #90days
