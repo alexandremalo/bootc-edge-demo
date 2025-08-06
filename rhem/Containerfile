@@ -15,6 +15,7 @@ ADD files/wait-for-readiness.sh /opt/wait-for-readiness.sh
 RUN chmod +x /opt/wait-for-readiness.sh
 ADD files/01-wait-for-ready-device.yaml /usr/lib/flightctl/hooks.d/beforeupdating/01-wait-for-ready-device.yaml
 ADD files/01-conditional-ansible-run.yaml /usr/lib/flightctl/hooks.d/afterupdating/01-conditional-ansible-run.yaml
+ADD files/01-at-boot-ansible.yaml /usr/lib/flightctl/hooks.d/afterrebooting/01-at-boot-ansible.yaml
 
 #Add ansible playbook to run at edge location
 RUN mkdir /opt/ansible/

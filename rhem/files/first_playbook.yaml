@@ -11,7 +11,7 @@
         url: https://debug-api.malo.tech
         method: POST
         body_format: json
-        body: '{"message": "hello from Ansible in Bootc"}'
+        body: '{"msg": "hello from Ansible in Bootc"}'
         status_code: 201
           
 
