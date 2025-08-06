@@ -7,13 +7,15 @@ RUN dnf -y --enablerepo="rhacm-2.14-for-rhel-9-$(uname -m)-rpms" install flightc
 	systemctl enable flightctl-agent.service && \
 	systemctl mask bootc-fetch-apply-updates.timer
 #Configure call home to rhem central server
-ADD config.yaml /etc/flightctl/
+ADD files/config.yaml /etc/flightctl/
 
 #Configure flightctl lifecycle hooks
-RUN mkdir -pv         /{usr/lib,etc}/flightctl/hooks.d/{beforeUpdating,afterUpdating,beforeRebooting,afterRebooting}/
+RUN mkdir -pv /{usr/lib,etc}/flightctl/hooks.d/{beforeupdating,afterupdating,beforerebooting,afterrebooting}/
+ADD files/wait-for-readiness.sh /opt/wait-for-readiness.sh
+RUN chmod +x /opt/wait-for-readiness.sh
+ADD files/01-wait-for-ready-device.yaml /usr/lib/flightctl/hooks.d/beforeupdating/01-wait-for-ready-device.yaml
+ADD files/01-conditional-ansible-run.yaml /usr/lib/flightctl/hooks.d/afterupdating/01-conditional-ansible-run.yaml
 
-#Add script to run at edge location
+#Add ansible playbook to run at edge location
 RUN mkdir /opt/ansible/
-ADD first_playbook.yaml /opt/ansible/
-
-
+ADD files/first_playbook.yaml /opt/ansible/

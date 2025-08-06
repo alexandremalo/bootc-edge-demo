@@ -1,0 +1,5 @@
+- run: /usr/bin/ansible-playbook --inventory /var/opt/inventory.ini /opt/ansible/*
+  timeout: 10m
+  if:
+    - path: /opt/ansible/
+      op: [created, updated, removed]

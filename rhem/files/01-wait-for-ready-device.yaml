@@ -1,0 +1,2 @@
+- run: /usr/bin/sh /opt/wait-for-readiness.sh
+  timeout: 5m
